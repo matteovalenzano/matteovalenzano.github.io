@@ -16,7 +16,7 @@ const path = location.pathname.replace("/", "").toLowerCase();
 if (links[path]) {
   location.replace(links[path]);
 } else {
-  document.body.innerHTML = `<p>Questo short link non esiste</p>`;
+  document.body.innerHTML = `<p>Questo link non esiste</p>`;
 }
 </script>
 </head>
