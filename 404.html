@@ -1,43 +1,24 @@
-```html
 <!DOCTYPE html>
-<html lang="it">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Redirect...</title>
+<meta charset="UTF-8">
+<title>Redirect...</title>
+<script>
+const links = {
+  "montagna2026giorno2": "https://www.komoot.com/it-it/tour/2773081203?share_token=aqmH5eCSur5jaJhph3OzCHqL2TvlW6qG847r6pMer4gjuDBHRz&ref=",
+  "montagna2026giorno3": "https://www.komoot.com/it-it/tour/2773082044?share_token=aBxqrwd2OtQ04rUQMbScjEOschro5vwrI2tmVUHdY15LHI8W39&ref=",
+  "montagna2026giorno4": "https://www.komoot.com/it-it/tour/2773227385?share_token=a6xVVL3XA0KaKIDWwym6UoYltOXUvEsFohjS3s6s6OlnIzgBdv&ref=",
+  "montagna2026giorno5": "https://www.komoot.com/it-it/tour/2773273167?share_token=aRZ9yqnf8EPHqv4IFC22EQPdy0ib4OwRGy8dtDVAuvT4hxGvwn&ref="
+};
 
-  <script>
-    // Mappa: alias (tutto minuscolo) -> URL di destinazione
-    const links = {
-      "montagna2026giorno2": "https://www.komoot.com/it-it/tour/2773081203?share_token=aqmH5eCSur5jaJhph3OzCHqL2TvlW6qG847r6pMer4gjuDBHRz&ref=",
-      "montagna2026giorno3": "https://www.komoot.com/it-it/tour/2773082044?share_token=aBxqrwd2OtQ04rUQMbScjEOschro5vwrI2tmVUHdY15LHI8W39&ref=",
-      "montagna2026giorno4": "https://www.komoot.com/it-it/tour/2773227385?share_token=a6xVVL3XA0KaKIDWwym6UoYltOXUvEsFohjS3s6s6OlnIzgBdv&ref=",
-      "montagna2026giorno5": "https://www.komoot.com/it-it/tour/2773273167?share_token=aRZ9yqnf8EPHqv4IFC22EQPdy0ib4OwRGy8dtDVAuvT4hxGvwn&ref="
-    };
+const path = location.pathname.replace("/", "").toLowerCase();
 
-    // Fallback se l'alias non esiste (home del tuo Pages)
-    const fallback = "https://matteovalenzano.github.io/";
-
-    // Estrae l'alias dall'URL:
-    // /Montagna2026Giorno2  -> "montagna2026giorno2"
-    // /montagna2026giorno2/ -> "montagna2026giorno2"
-    const alias = window.location.pathname
-      .replace(/^\/+|\/+$/g, "")   // toglie / iniziali e finali
-      .toLowerCase();
-
-    // Redirect
-    const dest = links[alias] || fallback;
-    window.location.replace(dest);
-  </script>
-
-  <!-- (opzionale) Se JS è disabilitato, almeno mostriamo un link cliccabile -->
-  <noscript>
-    <meta http-equiv="refresh" content="0; url=https://matteovalenzano.github.io/" />
-  </noscript>
+if (links[path]) {
+  location.replace(links[path]);
+} else {
+  document.body.innerHTML = `<p>Questo short link non esiste</p>`;
+}
+</script>
 </head>
-
-<body>
-  <p>Reindirizzamento in corso… Se non succede nulla, <a href="https://matteovalenzano.github.io/">clicca qui</a>.</p>
-</body>
+<body></body>
 </html>
-```
